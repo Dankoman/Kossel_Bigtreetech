@@ -149,14 +149,9 @@
   #define MOTHERBOARD BOARD_BIGTREE_SKR_V1_3
 #endif
 
-<<<<<<< HEAD
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
 #define CUSTOM_MACHINE_NAME "ANYCUBIC Kossel"
-=======
-// Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "3D Printer"
->>>>>>> origin/bugfix-2.0.x
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -476,11 +471,7 @@
 #define HEATER_3_MAXTEMP 275
 #define HEATER_4_MAXTEMP 275
 #define HEATER_5_MAXTEMP 275
-<<<<<<< HEAD
 #define BED_MAXTEMP 120
-=======
-#define BED_MAXTEMP      150
->>>>>>> origin/bugfix-2.0.x
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -558,7 +549,6 @@
 #define MAX_BED_POWER 255 // limits duty cycle to bed; 255=full current
 
 #if ENABLED(PIDTEMPBED)
-<<<<<<< HEAD
 
   // Anycubic Kossel
   // this is for the aluminium bed with a BuildTak-like sticker on it
@@ -574,9 +564,6 @@
     #define DEFAULT_bedKd 482.59
   #endif
 
-=======
-  //#define MIN_BED_POWER 0
->>>>>>> origin/bugfix-2.0.x
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
@@ -772,7 +759,6 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-<<<<<<< HEAD
 #define X_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING (ANYCUBIC_PROBE_VERSION + 0 == 1) // V1 is NO, V2 is NC
@@ -780,15 +766,6 @@
 #define Y_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING Z_MIN_ENDSTOP_INVERTING
-=======
-#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
->>>>>>> origin/bugfix-2.0.x
 
 /**
  * Stepper Drivers
@@ -1132,12 +1109,7 @@
 // Feedrate (mm/m) for the "accurate" probe of each point
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 3)
 
-<<<<<<< HEAD
-// The number of probes to perform at each point.
-//   Set to 2 for a fast/slow probe, using the second probe result.
-//   Set to 3 or more for slow probes, averaging the results.
-#define MULTIPLE_PROBING 3
-=======
+
 /**
  * Multiple Probing
  *
@@ -1147,9 +1119,9 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 3
 //#define EXTRA_PROBING    1
->>>>>>> origin/bugfix-2.0.x
+
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1182,14 +1154,11 @@
 #endif
 
 // Before deploy/stow pause for user confirmation
-<<<<<<< HEAD
 #define PAUSE_BEFORE_DEPLOY_STOW
-=======
 //#define PAUSE_BEFORE_DEPLOY_STOW
 #if ENABLED(PAUSE_BEFORE_DEPLOY_STOW)
   //#define PAUSE_PROBE_DEPLOY_WHEN_TRIGGERED // For Manual Deploy Allenkey Probe
 #endif
->>>>>>> origin/bugfix-2.0.x
 
 /**
  * Enable one or more of the following if probing seems unreliable.
@@ -1298,13 +1267,8 @@
   #define MAX_SOFTWARE_ENDSTOP_Z
 #endif
 
-<<<<<<< HEAD
-#if ENABLED(MIN_SOFTWARE_ENDSTOPS) || ENABLED(MAX_SOFTWARE_ENDSTOPS)
-  #define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
-=======
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
-  //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
->>>>>>> origin/bugfix-2.0.x
+  #define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
 
 /**
@@ -1494,7 +1458,6 @@
  * Points to probe for all 3-point Leveling procedures.
  * Override if the automatically selected points are inadequate.
  */
-<<<<<<< HEAD
 #if ENABLED(AUTO_BED_LEVELING_3POINT) || ENABLED(AUTO_BED_LEVELING_UBL)
   #define PROBE_PT_1_X -40
   #define PROBE_PT_1_Y 60
@@ -1502,15 +1465,6 @@
   #define PROBE_PT_2_Y 60
   #define PROBE_PT_3_X 0
   #define PROBE_PT_3_Y -70
-=======
-#if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  //#define PROBE_PT_1_X 15
-  //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_3_Y 20
->>>>>>> origin/bugfix-2.0.x
 #endif
 
 /**
@@ -1638,19 +1592,7 @@
 
 // @section extras
 
-<<<<<<< HEAD
-//
-// EEPROM
-//
-// The microcontroller can store settings in the EEPROM, e.g. max velocity...
-// M500 - stores parameters in EEPROM
-// M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).
-// M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
-//
-#define EEPROM_SETTINGS // Enable for M500 and M501 commands
-//#define DISABLE_M503    // Saves ~2700 bytes of PROGMEM. Disable for release!
-#define EEPROM_CHITCHAT   // Give feedback on EEPROM commands. Disable to save PROGMEM.
-=======
+
 /**
  * EEPROM
  *
@@ -1660,13 +1602,12 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-//#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #if ENABLED(EEPROM_SETTINGS)
   //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
 #endif
->>>>>>> origin/bugfix-2.0.x
 
 //
 // Host Keepalive
@@ -1720,17 +1661,10 @@
 #define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
-<<<<<<< HEAD
-  // Specify a park position as { X, Y, Z }
-  #define NOZZLE_PARK_POINT { 0, 0, 20 }
-  #define NOZZLE_PARK_XY_FEEDRATE 100   // X and Y axes feedrate in mm/s (also used for delta printers Z axis)
-  #define NOZZLE_PARK_Z_FEEDRATE 100      // Z axis feedrate in mm/s (not used for delta printers)
-=======
   // Specify a park position as { X, Y, Z_raise }
   #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MAX_POS - 10), 20 }
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
   #define NOZZLE_PARK_Z_FEEDRATE 5      // (mm/s) Z axis feedrate (not used for delta printers)
->>>>>>> origin/bugfix-2.0.x
 #endif
 
 /**
