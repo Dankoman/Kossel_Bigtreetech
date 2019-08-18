@@ -1346,7 +1346,7 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
-#if ANYCUBIC_PROBE_VERSION == 0
+#if ANYCUBIC_PROBE_VERSION == 0 && DISABLED(BLTOUCH)
   #define AUTO_BED_LEVELING_3POINT
 #else
 //#define AUTO_BED_LEVELING_LINEAR
