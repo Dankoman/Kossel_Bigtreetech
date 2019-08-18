@@ -30,6 +30,12 @@
 // Anycubic Probe version 1 or 2 see README.md; 0 for no probe
 #define ANYCUBIC_PROBE_VERSION 0
 
+
+/**
+ * The BLTouch probe uses a Hall effect sensor and emulates a servo.
+ */
+#define BLTOUCH
+
 // Heated Bed:
 // 0 ... no heated bed
 // 1 ... aluminium heated bed with "BuildTak-like" sticker
@@ -658,7 +664,7 @@
   #define DELTA_CALIBRATION_MENU
 
   // uncomment to add G33 Delta Auto-Calibration (Enable EEPROM_SETTINGS to store results)
-  #if ANYCUBIC_PROBE_VERSION > 0
+  #if ANYCUBIC_PROBE_VERSION > 0 || ENABLED(BLTOUCH)
     #define DELTA_AUTO_CALIBRATION
   #endif
 
@@ -718,14 +724,14 @@
 //============================== Endstop Settings ===========================
 //===========================================================================
 
-// @section homing
+
 
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
 //#define USE_XMIN_PLUG
 //#define USE_YMIN_PLUG
-#if ANYCUBIC_PROBE_VERSION > 0
+#if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0
   #define USE_ZMIN_PLUG // a Z probe
 #endif
 #define USE_XMAX_PLUG
@@ -761,7 +767,7 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING (ANYCUBIC_PROBE_VERSION + 0 == 1) // V1 is NO, V2 is NC
+#define Z_MIN_ENDSTOP_INVERTING true   //(ANYCUBIC_PROBE_VERSION + 0 == 1) // V1 is NO, V2 is NC
 #define X_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false  // set to true to invert the logic of the endstop.
@@ -931,9 +937,11 @@
  *
  * Enable this option for a probe connected to the Z Min endstop pin.
  */
-#if ANYCUBIC_PROBE_VERSION > 0
+#if ANYCUBIC_PROBE_VERSION > 0 || ENABLED(BLTOUCH)
   #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 #endif
+
+
 
 /**
  * Z_MIN_PROBE_PIN
@@ -951,7 +959,7 @@
  *      - normally-open switches to 5V and D32.
  *
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN P1_25 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
@@ -965,7 +973,7 @@
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-#if ANYCUBIC_PROBE_VERSION == 0
+#if ANYCUBIC_PROBE_VERSION == 0 && DISABLED(BLTOUCH)
   #define PROBE_MANUALLY
   #define MANUAL_PROBE_START_Z 1.5
 #endif
@@ -974,8 +982,8 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-#if ANYCUBIC_PROBE_VERSION > 0
-  #define FIX_MOUNTED_PROBE
+#if ANYCUBIC_PROBE_VERSION > 0 && DISABLED(BLTOUCH)
+  //#define FIX_MOUNTED_PROBE
 #endif
 
 /**
@@ -984,10 +992,7 @@
 //#define Z_PROBE_SERVO_NR 0       // Defaults to SERVO 0 connector.
 //#define Z_SERVO_ANGLES { 70, 0 } // Z Servo Deploy and Stow angles
 
-/**
- * The BLTouch probe uses a Hall effect sensor and emulates a servo.
- */
-//#define BLTOUCH
+
 
 /**
  * Touch-MI Probe by hotends.fr
@@ -1145,11 +1150,11 @@
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
-#define Z_PROBE_OFFSET_RANGE_MIN -40
+#define Z_PROBE_OFFSET_RANGE_MIN -100
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-#if ANYCUBIC_PROBE_VERSION > 0
+#if ENABLED(BLTOUCH) || ANYCUBIC_PROBE_VERSION > 0 
   #define Z_MIN_PROBE_REPEATABILITY_TEST
 #endif
 
@@ -2392,7 +2397,7 @@
  * Set this manually if there are extra servos needing manual control.
  * Leave undefined or set to 0 to entirely disable the servo subsystem.
  */
-//#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
+#define NUM_SERVOS 1 // Servo index starts with 0 for M280 command
 
 // Delay (in milliseconds) before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
