@@ -1,4 +1,8 @@
-﻿# Marlin 3D Printer Firmware
+Ok so this is my atempt to get something that works on my Anycubic Kossel Linear Plus.
+Right now runninga Biggtreetech SKR 1.3 with TMC2208 and a genuine BLTouch.
+I started out from example configs but made some modifications to get it to work in my setup.
+
+# Marlin 3D Printer Firmware
 
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=bugfix-2.0.x)](https://travis-ci.org/MarlinFirmware/Marlin)
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
