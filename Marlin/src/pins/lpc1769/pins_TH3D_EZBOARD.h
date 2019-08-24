@@ -25,12 +25,17 @@
  * TH3D EZBoard pin assignments
  */
 
+<<<<<<< HEAD
 #ifndef TARGET_LPC1768
   #error "Oops! Make sure you have the LPC1768 environment selected in your IDE."
+=======
+#ifndef LPC1769
+  #error "Oops! Make sure you have the LPC1769 environment selected in your IDE."
+>>>>>>> origin/bugfix-2.0.x
 #endif
 
 #define BOARD_INFO_NAME   "TH3D EZBoard"
-#define BOARD_WEBSITE_URL "https://www.th3dstudio.com/product/ezboard-lite/"
+#define BOARD_WEBSITE_URL "th3dstudio.com"
 
 //
 // Servos
