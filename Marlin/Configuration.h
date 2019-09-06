@@ -693,7 +693,7 @@
     // Horizontal offset of the universal joints on the carriages.
     #define DELTA_CARRIAGE_OFFSET 20.6    // (mm)
     // Horizontal distance bridged by diagonal push rods when effector is centered.
-    #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))          // (mm) Get this value from G33 auto calibrate
+    #define DELTA_RADIUS 132.45 //(DELTA_SMOOTH_ROD_OFFSET-(DELTA_EFFECTOR_OFFSET)-(DELTA_CARRIAGE_OFFSET))          // (mm) Get this value from G33 auto calibrate
   #else
     // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
     #define DELTA_PRINTABLE_RADIUS 90.0   // (mm)
@@ -704,14 +704,14 @@
   #endif
 
   // Distance between bed and nozzle Z home position
-  #define DELTA_HEIGHT 244.98             // (mm) Get this value from G33 auto calibrate
+  #define DELTA_HEIGHT 245.12             // (mm) Get this value from G33 auto calibrate
 
-  #define DELTA_ENDSTOP_ADJ { -4.36, -0.70, 0.00 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ { -3.97, -0.64, 0.00 } // Get these values from G33 auto calibrate
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
-  #define DELTA_TOWER_ANGLE_TRIM { 0.56, -0.08, -0.4 } // Get these values from G33 auto calibrate
+  #define DELTA_TOWER_ANGLE_TRIM { 0.57, -0.11, -0.46 } // Get these values from G33 auto calibrate
 
   // Delta radius and diagonal rod adjustments (mm)
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
