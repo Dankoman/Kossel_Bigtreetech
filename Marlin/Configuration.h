@@ -902,19 +902,11 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-<<<<<<< HEAD
 #if DISABLED(JUNCTION_DEVIATION)
 
   #define DEFAULT_XJERK  5.0
   #define DEFAULT_YJERK  DEFAULT_XJERK
   #define DEFAULT_ZJERK  DEFAULT_XJERK // Must be same as XY for delta
-=======
-//#define CLASSIC_JERK
-#if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
-  #define DEFAULT_ZJERK  0.3
->>>>>>> origin/bugfix-2.0.x
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
   #if ENABLED(LIMITED_JERK_EDITING)
@@ -932,6 +924,7 @@
  *   https://reprap.org/forum/read.php?1,739819
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
+#define CLASSIC_JERK
 #if DISABLED(CLASSIC_JERK)
   #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
 #endif
