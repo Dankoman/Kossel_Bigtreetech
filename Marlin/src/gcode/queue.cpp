@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -163,8 +163,7 @@ bool GCodeQueue::enqueue_one(const char* cmd) {
   if (*cmd == 0 || *cmd == '\n' || *cmd == '\r') return true;
 
   if (_enqueue(cmd)) {
-    SERIAL_ECHO_START();
-    SERIAL_ECHOLNPAIR(MSG_ENQUEUEING, cmd, "\"");
+    SERIAL_ECHO_MSG(MSG_ENQUEUEING, cmd, "\"");
     return true;
   }
   return false;
@@ -517,7 +516,7 @@ void GCodeQueue::get_serial_commands() {
             #if ENABLED(PRINTER_EVENT_LEDS)
               printerEventLEDs.onPrintCompleted();
               #if HAS_RESUME_CONTINUE
-                inject_P(PSTR("M0 S"
+                inject_P(PSTR("M0 Q S"
                   #if HAS_LCD_MENU
                     "1800"
                   #else
