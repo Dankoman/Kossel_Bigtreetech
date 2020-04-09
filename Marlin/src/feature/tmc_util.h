@@ -24,7 +24,7 @@
 #include "../inc/MarlinConfig.h"
 #include "../lcd/ultralcd.h"
 
-#if HAS_TRINAMIC
+#if HAS_TRINAMIC_CONFIG
 
 #include <TMCStepper.h>
 #include "../module/planner.h"
@@ -137,13 +137,6 @@ class TMCMarlin : public TMC, public TMCStorage<AXIS_LETTER, DRIVER_ID> {
       #endif
     #endif
 
-    uint32_t get_cool_thrs() {
-      return _tmc_thrs(this->microsteps(), this->TCOOLTHRS(), planner.settings.axis_steps_per_mm[AXIS_ID]);
-    }
-    void set_cool_thrs(const uint32_t thrs) {
-      TMC::TCOOLTHRS(_tmc_thrs(this->microsteps(), thrs, planner.settings.axis_steps_per_mm[AXIS_ID]));
-    }
-
     #if HAS_LCD_MENU
       inline void refresh_stepper_current() { rms_current(this->val_mA); }
 
@@ -240,14 +233,6 @@ class TMCMarlin<TMC2209Stepper, AXIS_LETTER, DRIVER_ID, AXIS_ID> : public TMC220
         #endif
       }
     #endif
-
-    uint32_t get_cool_thrs() {
-      return _tmc_thrs(this->microsteps(), this->TCOOLTHRS(), planner.settings.axis_steps_per_mm[AXIS_ID]);
-    }
-    void set_cool_thrs(const uint32_t thrs) {
-      TMC2209Stepper::TCOOLTHRS(_tmc_thrs(this->microsteps(), thrs, planner.settings.axis_steps_per_mm[AXIS_ID]));
-    }
-
     #if USE_SENSORLESS
       inline int16_t homing_threshold() { return TMC2209Stepper::SGTHRS(); }
       void homing_threshold(int16_t sgt_val) {
@@ -261,6 +246,7 @@ class TMCMarlin<TMC2209Stepper, AXIS_LETTER, DRIVER_ID, AXIS_ID> : public TMC220
 
     #if HAS_LCD_MENU
       inline void refresh_stepper_current() { rms_current(this->val_mA); }
+
       #if ENABLED(HYBRID_THRESHOLD)
         inline void refresh_hybrid_thrs() { set_pwm_thrs(this->stored.hybrid_thrs); }
       #endif
@@ -414,4 +400,4 @@ void test_tmc_connection(const bool test_x, const bool test_y, const bool test_z
   void tmc_init_cs_pins();
 #endif
 
-#endif // HAS_TRINAMIC
+#endif // HAS_TRINAMIC_CONFIG
