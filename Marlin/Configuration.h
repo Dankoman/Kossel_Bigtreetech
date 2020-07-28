@@ -2373,6 +2373,12 @@
 //#define TFT_LVGL_UI_FSMC  // Robin nano v1.2 uses FSMC
 //#define TFT_LVGL_UI_SPI   // Robin nano v2.0 uses SPI
 
+//
+// Anycubic Mega TFT (AI3M)
+//
+//#define ANYCUBIC_TFT_MODEL
+//#define ANYCUBIC_TFT_DEBUG
+
 //=============================================================================
 //============================  Other Controllers  ============================
 //=============================================================================
