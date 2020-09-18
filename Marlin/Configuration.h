@@ -535,11 +535,18 @@
   //#define DEFAULT_Kp 63.0
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
-
+   #if ENABLED(PID_PARAMS_PER_HOTEND)
+    // Specify between 1 and HOTENDS values per array.
+    // If fewer than EXTRUDER values are provided, the last element will be repeated.
+    #define DEFAULT_Kp_LIST {  22.20,  20.0 }
+    #define DEFAULT_Ki_LIST {   1.08,   1.0 }
+    #define DEFAULT_Kd_LIST { 114.00, 112.0 }
+  #else
   // Anycubic Kossel - run 'M106 S255' & 'M303 E0 C10 S200'
   #define DEFAULT_Kp 22.36
   #define DEFAULT_Ki 1.63
   #define DEFAULT_Kd 76.48
+  #endif
 
 #endif // PIDTEMP
 
